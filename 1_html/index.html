@@ -6,13 +6,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repaso HTML</title>
+
+    <!-- CSS Interno -->
+     <style>
+        /* Seleccionamos y estilamos elementos por su nombre de etiqueta */
+
+        /* Todos los elementos que vienen de la etiqueta raiz html tengan una fuente Arial */
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Todos los div tendran un borde y un margen abajo */
+        div {
+            border: 2px solid;
+            /* Espaciado externo inferior */
+            margin-bottom: 15px;
+            color: purple;
+        }
+        
+        /* Seleccionamos conjuntos de elementos por su clase */
+        .ciudades {
+            text-align: center;
+            /* Espaciado interno */
+            padding: 15px;
+            color: green;
+        }
+        
+        /* Seleccionamos elementos UNICOS con el id */
+        #buenosaires {
+            color: blue;
+            background-color: #FFF4A3;
+        }
+        
+        #cordoba {
+            background-color: #FFC0C7;
+        }
+
+        #rosario {
+            background-color: #D9EEE1;
+        }
+     </style>
 </head>
 
 <!-- body es el contenido VISIBLE de la web -->
 <body>
-    <h1>Etiqueta titulo</h1>
-    <p>Esto es un parrafo</p>
-    <p>Esto es otro parrafo</p>
+
+    <!-- Seccion ciudades (para explicar clases e ids) -->
+    <section>
+        <!-- Primer div -->
+        <div class="ciudades" id="buenosaires">
+            <h2>Buenos Aires</h2>
+            <p>Capital del pais, capital del tango y un hermoso bolonqui</p>
+        </div>
+
+        <!-- Segundo div -->
+        <div class="ciudades" id="cordoba">
+            <h2>Cordoba</h2>
+            <p>Capital del fernet, el vino prittyado y la Mona Jimenez</p>
+        </div>
+
+        <!-- Tercer div -->
+        <div class="ciudades" id="rosario">
+            <h2>Rosario</h2>
+            <p>Lindo refugio de poetas y bohemios, además de Fito</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <div>
+        <h1>Etiqueta titulo</h1>
+        <p>Esto es un parrafo</p>
+        <p>Esto es otro parrafo</p>
+    </div>
 
     <hr>
 
@@ -61,6 +127,7 @@
     <p>
         <sup>Texto superescrito</sup>
     </p>
+
 
 </body>
 </html>

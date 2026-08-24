@@ -40,6 +40,14 @@
 ---
 
 # Cronograma clases
+
+## Clase 2
+- Continuar desde HTML Forms y saltar a CSS
+- Practica sugerida, armar todo el HTML de la pagina de [Google](https://about.google/intl/es_ALL/)
+
+---
+
+
 ## Clase 1
 - HTML hasta X
 - **Recordatorio: TODAS las etiquetas en linea iran siempre dentro de etiquetas en bloque. [Leccion W3 Schools](https://www.w3schools.com/html/html_formatting.asp)**
