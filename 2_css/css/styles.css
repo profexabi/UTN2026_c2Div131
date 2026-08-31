@@ -1,0 +1,42 @@
+/* ===============
+    Bordes 
+================*/
+header {
+    border: 1px solid;
+}
+
+nav {
+    border: 1px solid blue;
+}
+
+ul {
+    border: 1px solid green;
+}
+
+/* Seleccionamos etiquetas */
+header ul { /* Esto selecciona todos los ul descendientes del header */
+    list-style-type: none;
+}
+
+/* Seleccionamos un conjunto de elementos a partir de su clase */
+.link-nav {
+    color: #5f6368;
+    text-decoration: none;
+}
+
+.contenedor-prueba {
+    border: 1px solid red;
+    width: 500px;
+    height: 250px;
+    background-image: url("https://www.gstatic.com/marketing-cms/assets/images/0b/d4/e6516d32418884386205621ad689/about-companyinfo-hero.jpg=n-w2000-h625-fcrop64=1,0000051ffffffae1-rw");
+    background-size: cover;
+}
+
+.contenedor-texto {
+    border: 2px solid blue;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    height: 150px;
+    padding: 10px;
+    margin: 10px;
+}
