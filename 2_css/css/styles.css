@@ -13,6 +13,108 @@ ul {
     border: 1px solid green;
 }
 
+
+/* ==================
+    Fuentes
+================== */
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+/* Aca aplicamos esta fuente local a todos los elementos visibles de la pagina */
+body {
+    font-family: "Montserrat";
+    margin: 0;
+}
+
+/* =================
+    Portada
+================= */
+.portada {
+    background-image: url("../assets/img/UT5C4hCvmlSzJ7QeQy.webp");
+    height: 100vh;
+    background-size: cover;
+}
+
+.portada-texto {
+    font-family: "Vampiro One";
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.portada-texto h1 {
+    background: linear-gradient(90deg, #ff0080, #7928ca, #00d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;    
+}
+
+
+/* =================
+    Pseudoclases 
+==================*/
+/* Para los enlaces, generalmente cambiamos
+
+    - el color: para no tener ni el azul de no visitado ni el purpura de visitado
+    - text-decoration: para eliminar el subrayado
+    - generalmente el único que solemos usar es el :hover
+*/
+
+#enlace1:hover {
+    color: green;
+    text-decoration: none;
+}
+
+#enlace2:active {
+    background-color: yellow;
+    color: black;
+}
+
+
+/* ====================
+    Combinadores
+==================== */
+.combinadores {
+    border: 2px solid orange;
+}
+
+/* Los importantes! */
+/* Combinador descendiente 
+div p {
+    color: blue;
+}
+*/
+
+/* Combinador de hijo directo 
+div > p {
+    color: red;
+}
+*/
+
+
+/* Menos importantes! */
+/* Combinador de hermano adyacente 
+    - Afecta a los elementos que van justo despues de otro
+h1 + p {
+    color: green;
+}
+*/
+
+/* Combinador de hermano general 
+    - Afecta a todos los hermanos de un elemento, no necesariamente inmediatos*/
+h1 ~ p {
+    color: purple;
+}
+
+
+
 /* Seleccionamos etiquetas */
 header ul { /* Esto selecciona todos los ul descendientes del header */
     list-style-type: none;
@@ -20,8 +122,10 @@ header ul { /* Esto selecciona todos los ul descendientes del header */
 
 /* Seleccionamos un conjunto de elementos a partir de su clase */
 .link-nav {
+    /*
     color: #5f6368;
     text-decoration: none;
+    */
 }
 
 .contenedor-prueba {

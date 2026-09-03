@@ -21,9 +21,44 @@
     <!-- Creo la ruta para que desde la raiz de esta carpeta (donde esta el index.html) apunte al archivo css externo -->
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- Incorporamos nuestro favicon -->
+    <link rel="shortcut icon" href="assets/icons/favicon_io/favicon.ico" type="image/x-icon">
+
+    <!-- Fuente externa a partir del CDN de Google
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+    <!--
+    <div class="portada">
+        <div class="portada-texto">
+            <h1>Super portada re piola</h1>
+        </div>
+    </div>
+    -->
+
+    <!-- Combinadores CSS -->
+    <!--
+    <h1>Titulo</h1>
+    <p>Parrafo hermano inmediato</p>
+    <p>Parrafo hermano general</p>
+    -->
+    <!--
+    <div class="combinadores">
+        <p>Este parrafo sera azul</p>
+        <section>
+            <p>Este parrafo tambien sera azul</p>
+        </section>
+     </div>
+     <p>Este parrafo no sera azul</p>
+    -->
 
     <!-- Encabezado -->
     <header>
@@ -37,16 +72,16 @@
         <nav>
             <ul>
                 <li class="nav-lista">
-                    <a class="link-nav" href="https://about.google/intl/es_ALL/">Acerca de</a>
+                    <a id="enlace1" class="link-nav" href="https://about.google/intl/es_ALL/">Acerca de</a>
                 </li>
                 <li class="nav-lista">
-                    <a class="link-nav" href="https://about.google/intl/es_ALL/products/">Productos</a>
+                    <a id="enlace2" class="link-nav" href="https://fireart.studio/blog/20-best-futuristic-website-examples-to-inspire-you/">Productos</a>
                 </li>
                 <li class="nav-lista">
-                    <a class="link-nav" href="https://about.google/intl/es_ALL/company-info/">Sobre la empresa</a>
+                    <a id="enlace3" class="link-nav" href="https://fonts.google.com/specimen/Montserrat">Sobre la empresa</a>
                 </li>
                 <li class="nav-lista">
-                    <a class="link-nav" href="https://blog.google/?utm_source=about.google&utm_medium=referral&utm_campaign=navigation">Noticias</a>
+                    <a id="enlace4" class="link-nav" href="https://www.youtube.com/@SoulSearchAndDestroy">Noticias</a>
                 </li>
             </ul>
         </nav>
