@@ -1,5 +1,15 @@
 # CSS
 
+## Jueguitos para practicar
+- [Flex froggy](https://flexboxfroggy.com/#es)
+- [Grid garden](https://cssgridgarden.com/#es)
+
+### [Guia de buenas practicas CSS](https://www.w3schools.com/css/css_performance.asp)
+### [Guia de accesibilidad CSS](https://www.w3schools.com/css/css_accessibility.asp)
+
+---
+
+
 ## [Guia de flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - Hay 2 direcciones, horizontal o vertical
 ```css

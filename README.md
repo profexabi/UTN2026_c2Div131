@@ -6,12 +6,16 @@
 # Cronograma clases
 
 ## Prox clase
-- Continuar desde box model en CSS
-- Medidas absolutas (px) y medidas relativas (% o rem)
+- Continuar desde CSS Advanced
+- Full practica de maquetacion
 
-## Clase 2
-- Continuar desde HTML Forms y saltar a CSS
-- Practica sugerida, armar todo el HTML de la pagina de [Google](https://about.google/intl/es_ALL/)
+---
+
+## Practicas sugeridas
+- [Practica sugerida, crear un menu dropdown](https://www.w3schools.com/css/css_dropdowns.asp)
+    - [Practicar `display:none`](https://www.w3schools.com/css/css_display.asp)
+
+- [Crear `<header>` fijos posicionando con absolute, fixed o sticky](https://www.w3schools.com/css/css_position.asp)
 
 ---
 
