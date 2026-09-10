@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santander</title>
+    <style>
+        /* ===============
+            Variables
+        ================*/
+        :root {
+            --primario-blanco: #ffffff;
+            --primario-gris1: #f8f9fa;
+            --primario-gris2: #cbcfd4;
+            --primario-rojo: #E71313;
+
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        main, .conoce-container_sup, .conoce-container_inf {
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+
+        .conoce-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 60%;
+            margin-top: 5%;
+        }
+
+        .conoce-card {
+            width: 220px;
+            height: 170px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        
+        .primario {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px;
+        }
+
+        .secundario {
+            background-color: var(--primario-rojo);
+            color: var(--primario-blanco);
+        }
+
+        .conoce-container_sup, .conoce-container_inf {
+            justify-content: space-between;
+            margin-top: 2%;
+        }
+
+        
+        .conoce-card_img img {
+            width: 55px;
+        }
+
+        /* ==================
+            Media Queries
+        ===================*/
+        @media (max-width: 1550px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .conoce-container {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .conoce-container_sup, .conoce-container_inf {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+
+        <h2>Conoce todo lo que tenemos para vos</h2>
+
+        <div class="conoce-container">
+        
+            <div class="conoce-container_sup">
+                <!-- Primera card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AC_010_wallet_e153129d0c.png?updated_at=2025-08-18T22:17:02.894Z" alt="">
+                    </div>
+                    <h4>Cuentas y tarjetas</h4>
+                </div>
+        
+                <!-- Segunda card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AC_313_investment_fund_fa08ac0444.png?updated_at=2026-04-20T12:50:53.117Z" alt="">
+                    </div>
+                    <h4>Prestamos personales</h4>
+                </div>
+        
+                <!-- Tercera card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/ico_auto_549f4ad00f.png?updated_at=2024-03-04T20:38:27.384Z" alt="">
+                    </div>
+                    <h4>Prestamos Prendarios</h4>
+                </div>
+
+                <!-- Cuarta card -->
+                <div class="conoce-card secundario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AB_050_account_group_dollar_1_4f579bfd60.png?updated_at=2025-08-19T19:52:16.929Z" alt="">
+                    </div>
+                    <h4>Promociones</h4>
+                </div>
+            </div>
+
+            <div class="conoce-container_inf">
+                <!-- Primera card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AB_050_account_group_dollar_1_4f579bfd60.png?updated_at=2025-08-19T19:52:16.929Z" alt="">
+                    </div>
+                    <h4>Cuentas y tarjetas</h4>
+                </div>
+        
+                <!-- Segunda card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AC_313_investment_fund_fa08ac0444.png?updated_at=2026-04-20T12:50:53.117Z" alt="">
+                    </div>
+                    <h4>Prestamos personales</h4>
+                </div>
+        
+                <!-- Tercera card -->
+                <div class="conoce-card primario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/ico_auto_549f4ad00f.png?updated_at=2024-03-04T20:38:27.384Z" alt="">
+                    </div>
+                    <h4>Prestamos Prendarios</h4>
+                </div>
+
+                <!-- Cuarta card -->
+                <div class="conoce-card secundario">
+                    <div class="conoce-card_img">
+                        <img src="https://www.santander.com.ar/api/images/AB_050_account_group_dollar_1_4f579bfd60.png?updated_at=2025-08-19T19:52:16.929Z" alt="">
+                    </div>
+                    <h4>Promociones</h4>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

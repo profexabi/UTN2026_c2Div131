@@ -1,4 +1,14 @@
 /* ===============
+    Variables
+================*/
+:root {
+    --primario-gris1: #f8f9fa;
+    --primario-gris2: #cbcfd4;
+    --primario-rojo: #E71313;
+
+}
+
+/* ===============
     Bordes 
 ================*/
 header {
@@ -17,7 +27,7 @@ ul {
 /* ==================
     Fuentes
 ================== */
-@font-face {
+@font-face { /* Cuando trabajamos con fuentes locales, usamos @font-face */
     font-family: "Montserrat";
     src: url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
 }

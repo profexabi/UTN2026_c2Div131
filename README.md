@@ -6,8 +6,9 @@
 # Cronograma clases
 
 ## Prox clase
-- Continuar desde CSS Advanced
-- Full practica de maquetacion
+- Arrancar con JavaScript I y II
+- Full practica de maquetacion, [continuar con pagina google
+](https://onlinegdb.com/5Mhyci5KXO)
 
 ---
 

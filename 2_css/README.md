@@ -1,5 +1,9 @@
 # CSS
 
+## Recursos
+- [Gradient CSS](https://cssgradient.io/)
+- [Ejemplos Box shadow](https://getcssscan.com/css-box-shadow-examples)
+
 ## Jueguitos para practicar
 - [Flex froggy](https://flexboxfroggy.com/#es)
 - [Grid garden](https://cssgridgarden.com/#es)
