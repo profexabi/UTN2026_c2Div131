@@ -1,3 +1,95 @@
+# Entendiendo `Map`
+Tiene sentido **si querés usar distintos tipos de valores como claves**. La particularidad de `Map` en JavaScript es que sus claves **no tienen que ser strings**.
+
+ En tu ejemplo:
+
+```
+const mapa = new Map();
+
+mapa.set(123, "ID");
+mapa.set(true, "activo");
+```
+
+ estás creando dos asociaciones:
+
+```
+123  → "ID"
+true → "activo"
+```
+
+ Y después podés hacer:
+
+```
+mapa.get(123);  // "ID"
+mapa.get(true); // "activo"
+```
+
+ ### ¿Por qué no un objeto?
+
+ Con un objeto:
+
+```
+const obj = {};
+
+obj[123] = "ID";
+obj[true] = "activo";
+```
+
+ JavaScript convierte esas claves a strings:
+
+```
+obj["123"];
+obj["true"];
+```
+
+ En cambio, `Map` **conserva el tipo de la clave**:
+
+```
+mapa.get(123);   // busca la clave número 123
+mapa.get("123"); // busca otra clave distinta → undefined
+```
+
+ También podés usar objetos como claves:
+
+```
+const usuario = { nombre: "Juan" };
+
+const mapa = new Map();
+
+mapa.set(usuario, "administrador");
+
+mapa.get(usuario); // "administrador"
+```
+
+ Eso es algo que un objeto común no hace de la misma manera.
+
+ ### Pero tu ejemplo concreto...
+
+ Si solamente tenés:
+
+```
+mapa.set(123, "ID");
+mapa.set(true, "activo");
+```
+
+ no hay una ventaja particularmente útil: es más bien un ejemplo para mostrar que **`Map` permite claves de distintos tipos**.
+
+ Un caso más realista sería:
+
+```
+const usuarios = new Map();
+
+usuarios.set(123, { nombre: "Juan" });
+usuarios.set(456, { nombre: "Ana" });
+
+usuarios.get(123);
+// { nombre: "Juan" }
+```
+
+ Ahí `Map` tiene bastante más sentido: usás el ID numérico como clave y recuperás rápidamente la información asociada.
+
+---
+
 # `JavaScript` vs `TypeScript`
 typescript vs javascript
 
