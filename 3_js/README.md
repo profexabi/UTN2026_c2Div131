@@ -1,7 +1,9 @@
 # JavaScript
 
 ### Prox clase
-- JavaScript V
+- Continuar JavaScript V desde filter
+- JavaScript VI
+- Charlar fecha prox parcial
 
 ---
 
@@ -18,6 +20,63 @@ Antes de ejecutar línea por línea, el motor de JavaScript analiza todo el cód
 
 **2. Fase de ejecución**
 Recién después ejecuta el código en orden.
+
+
+---
+
+
+## JavaScript V / Objetos globales y almacenamiento persistente. Iteracion en arrays, objetos y arrays de objetos
+
+- *Ejercicios en JavaScript Ejercicios Tercera Parte en el Campus Virtual*
+
+Las APIs son un conjunto de herramientas y funciones para poder interactuar con algo
+El navegador nos provee justamente de herramientas y funciones para interactuar con el navegador. Por tanto, todas aquellas funciones con las que podemos interactuar con el navegador, a traves de funciones para la consola, ventanas flotantes, etiquetas de graficos como [canvas](https://www.w3schools.com/html/html5_canvas.asp) son APIs del navegador, llamadas APIs web.
+
+**El navegador nos provee estas funcionalidades para interactuar con el navegador, estas APIs web a traves de los objetos globales**
+
+### Que son los objetos globales entonces?
+En JavaScript, los objetos globales son aquellos que estan disponibles en todo el entorno de ejecucion sin necesidad de importarlos o declararlos explicitamente. (a diferencia de `Math` o `Scanner` en Java).
+
+Un entorno de ejecucion es el lugar donde se ejecuta JavaScript. Tanto el navegador, su entorno de ejecucion original como Node.js son entornos los entornos de ejecucion donde corre JavaScript.
+
+**Los objetos globales** varian dependiendo del entorno de ejecucion, ya sea un navegador web o Node.js pero **su proposito es facilitar el acceso a ciertas funciones y valores predeterminados**
+
+En el entorno del navegador, los objetos globales incluyen todos los objetos estandar de JavaScript (como Array, String, Object, etc), asi como un conjunto de objetos especificos para la interaccion con la pagina web y su entorno.
+
+### El objeto global `window`
+El objeto global principal en el entorno del navegador es `window`. Este objeto representa la ventana del navegador y actua como el contenedor global apra todas las variables (var concretamente), funciones y objetos globales de una pagina web.
+
+Todos los objetos y funciones definidos en el ambito global estan automaticamente disponibles como propiedades del objeto `window`. Algunos objetos y metodos importantes del objeto `window` son:
+
+- `document`: Representa el [DOM](https://www.w3schools.com/whatis/whatis_htmldom.asp) de la pagina web actual, permitiendo el acceso y la manipulacion de elementos HTML
+
+- `alert()`, `prompt()`, `confirm()`: Metodos que permiten mostrar dialogos al usuario mediante ventanas flotantes
+
+- `setTimeout()`, `setInterval()`: Metoods para programar la ejecucion de codigo despues de un tiempo o en intervalos regulares, respectivamente
+
+- `location`: Proporciona informacion sobre la URL actual de la pagina y permite redireccionar a otras URL
+
+- `navigator`: Contiene inforamcion sobre el navegador, como la version, el agente de usuario y la geolocalizacion
+
+- `console`: Proporciona acceso a la consola del navegador para mostrar mensajes de depuracion
+
+- `localStorage()` y `sessionStorage()`: Permiten almacenar datos en el navegador de manera persistente o temporal
+```js
+localStorage.setItem("nombre", "Franco"); // Guardo el valor "Franco" en la clave "nombre" y este valor quedara permanentemente alojado en mi navegador
+
+// Para obtener el resultado de un valor guardado en el localStorage, obtengo este valor a traves de obtener su clave
+localStorage.getItem("carrito"); // Aca traigo todos los productos guardados en un carrito de compra
+
+// Para verlos, puedo mostrarlos en la consola en formato tabla
+console.table(localStorage.getItem("carrito"));
+```
+
+- `history`: Proporciona acceso al historial de navegacion de navegador
+
+- `fetch`: Un objeto para realizar solicitudes HTTP asincronicas
+```js
+fetch("https://jsonplaceholder.typicode.com/users") // Para obtener todo el listado de usuarios de esta base de datos, gracias a hacer una peticion HTTP con el objeto fetch a este endpoint (url)
+```
 
 
 ---
