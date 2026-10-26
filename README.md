@@ -7,7 +7,7 @@
 
 ## Fechas importantes
 #### Primer parcial: Jueves 15 08:30 12:30 / Ocupa la clase
-#### Recu 1er parcial: Jueves 22 08:30 12:30 / Daremos clase en paralelo
+#### Recu 1er parcial: Lunes 26 08:30 12:30 / Daremos clase en paralelo
     El parcial se resolverá por discord compartiendo pantalla. 
     https://discord.gg/q9uDPTag9
 
