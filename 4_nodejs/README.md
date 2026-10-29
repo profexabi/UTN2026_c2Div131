@@ -39,7 +39,7 @@ Es basicamente una aplicacion que hace operaciones con una Base de datos:
 
 ---
 
-# [Conceptos fundamentales de la Web](https://www.youtube.com/watch?v=l6oF_RpBf64)
+# [Protocolo HTTP y lenguaje HTML](https://www.youtube.com/watch?v=l6oF_RpBf64)
 La comunicacion en la web se asienta en la comunicacion entre dos computadoras
 
 1. **Cliente (navegador web)**: Esta computadora hace peticiones HTTP -> http request a un servidor

@@ -1,3 +1,18 @@
+# Que es una API REST?
+Una **API REST** (Interfaz de Programación de Aplicaciones de Transferencia de Estado Representacional) es un estilo arquitectónico que permite la comunicación entre sistemas mediante el protocolo **HTTP**, donde los recursos se identifican con **URLs** y se manipulan mediante métodos estándar como **GET** (leer), **POST** (crear), **PUT** (actualizar) y **DELETE** (eliminar).
+
+Sus principios fundamentales incluyen:
+*   **Arquitectura cliente-servidor**: Separación total entre la lógica de la interfaz y el almacenamiento de datos.
+*   **Sin estado**: Cada solicitud contiene toda la información necesaria y no depende de sesiones previas.
+*   **Interfaz uniforme**: Uso consistente de métodos HTTP y formatos como **JSON** o XML para intercambiar datos.
+*   **Capas y caché**: Permite sistemas jerárquicos y almacenamiento temporal para optimizar el rendimiento.
+
+**API REST** se refiere al concepto o especificación arquitectónica, mientras que **API RESTful** es la implementación práctica que sigue estrictamente estos principios.
+
+
+---
+
+
 # Que es el hipertexto en HTML y HTTP?
 La palabra hipertexto aparece en HTML y HTTP, pero ambos tienen funciones diferentes. Vamos a verlo de forma sencilla.
 

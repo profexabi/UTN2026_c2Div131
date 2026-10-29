@@ -1,21 +1,59 @@
-// Creamos un servidor de Node.js con el modulo http que tendremos que importar
-const http = require("http"); // Traigo este modulo para poder utilizar sus metodos, que me permitiran crear un servidor
+console.log("Hola mundo desde Node.js");
 
-// Creamos el servidor
-const servidor = http.createServer((req, res) => {
+// fs (File System ): Modulo que nos permite interactuar con el sistema de archivos. Podremos leer, escribir, actualizar y borrar archivos de forma sencilla
+const fs = require("fs");
 
-    // Configurar la respuesta
-    res.statusCode = 200; // Codigo 200 indica peticion exitosa
+// readFile es una operacion asincronica para leer archivos con el modulo fs
+fs.readFile("archivos/leeme.txt", "utf8", (err, data) => {
+    if (err) {
+        console.log("Ocurrio un error: ", err);
+        return; // Todo lo de abajo de return no se ejecuta y se termina esta funcion
+    }
 
-    res.setHeader("Content-Type", "text/plain"); // Indicamos que responderemos con texto
-
-    res.end("Hola mundo desde un servidor Node.js"); // Mensaje que enviamos al cliente
+    console.log("Contenido del archivo: ", data);
 });
 
-// Definimos un puerto y arrancamos el servidor
-const puerto = 3000;
-servidor.listen(puerto, () => {
-    console.log(`Servidor corriendo en http://localhost:${puerto}`);
-});
 
-// Detenemos la ejecucion de nuestro servidor en la terminal con Ctrl + C
+// path: Modulo para trabajar y manipular rutas y directorios de forma segura y comodo
+
+const path = require("path");
+const ruta = "Escritorio/Docencia/2026/Cuatri\ 2/UTN2026_c2Div131/4_nodejs/archivos/leeme.txt";
+
+const nombreArchivo = path.basename(ruta);
+console.log("El nombre del archivo es: ", nombreArchivo);
+
+
+// os (Operative System): Modulo que nos permite obtener informacion del sistema operativo
+const os = require("os");
+
+const memoriaLibre = os.freemem();
+const tipoSistema = os.type();
+
+console.log("Memoria libre: ", memoriaLibre);
+console.log("Tipo de sistema: ", tipoSistema);
+
+
+/*=========================
+    Que son los modulos?
+===========================
+
+Cada vez que usamos require() estamos "importando" un modulo para que podamos utilizar sus funciones en nuestro archivo actual
+
+Este enfoque nos ayuda a organizar mejor nuestro codigo para evitar que todo este en un archivo y permitiendo poder reutilizar funciones o clases en diferentes partes de nuestro proyecto
+
+saludos.js
+
+    // Defino una funcion basica
+    function saludar(nombre) {
+            return `Hola, ${nombre}!`;
+    }
+
+
+    // Exportamos la funcion saludar para usarla en otros modulos
+    module.exports = saludar; // Sintaxis vieja commonjs
+*/
+
+// Traigo la funcion saludar de saludos.js
+const saludar = require("./saludos");
+
+console.log(saludar("Luca")); // Hola, Luca!
