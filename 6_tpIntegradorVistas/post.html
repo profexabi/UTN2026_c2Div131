@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <!-- Ruta archivo CSS externo -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <header>
@@ -41,12 +43,82 @@
     </header>
 
     <main>
+
+        <!-- Formulario POST product -->
+        <section class="createProduct-container">
+
+            <h2>Crear producto</h2>
+
+            <form id="createProductForm">
+
+                <label for="categoryProd">Categoria</label>
+                <select name="category" id="categoryProd" required>
+                    <option value="food">Comida</option>
+                    <option value="drink">Bebida</option>
+                </select>
+
+                <label for="imageProd">Imagen</label>
+                <input type="text" name="image" id="imageProd" required>
+
+                <label for="nameProd">Nombre</label>
+                <input type="text" name="name" id="nameProd" required>
+
+                <label for="priceProd">Precio</label>
+                <input type="number" name="price" id="priceProd" min="1" required>
+
+                <input type="submit" value="Crear producto">
+
+            </form>
+
+        </section>
         <section id="contenedor-productos"></section>
     </main>
-    
+
     <script>
         const contenedorProductos = document.getElementById("contenedor-productos");
         const urlBase = "http://localhost:3000";
+        const createProductForm = document.getElementById("createProductForm");
+
+        createProductForm.addEventListener("submit", async event => {
+
+            event.preventDefault(); // Evitamos el envio por defecto del <form>
+
+            // Obtenemos la data del formulario
+            const formData = new FormData(event.target);
+            console.log(formData); // FormData(4) { category → "food", image → "urlImagen", name → "Cono papas fritas", price → "123" }
+
+            // Transformamos este objeto nativo del <form> en un objeto literal JS
+            const formObj = Object.fromEntries(formData.entries());
+            console.log(formObj); // {category: 'drink', image: 'https://img.minutoneuquen.com/O3y5dEyXGTiAP6aLYVuU…jb20vZm90b2dyYWZpYXMvMjAyMy8zLzI4LzU5NTM4Mi5qcGVn', name: 'fernet buhero negro', price: '12345'}
+            console.log(JSON.stringify(formObj)); // {"category":"food","image":"https://img.minutoneuquen.com/O3y5dEyXGTiAP6aLYVuUWBRCNAQPGyZg_AwfYgPyHa4/rs:fit:2000:2000:0/aHR0cHM6Ly9hc3NldHMubWludXRvbmV1cXVlbi5jb20vZm90b2dyYWZpYXMvMjAyMy8zLzI4LzU5NTM4Mi5qcGVn","name":"Cono de papas fritas","price":"1234"}
+
+
+            try {
+                const response = await fetch(`${urlBase}/api/products`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formObj)
+                });
+
+                // Mostramos por consola la respuesta cruda del servidor
+                console.log(response);
+
+                // Parseamos el JSON del body de la response para poder acceder al valor de message
+                const data = await response.json();
+
+                console.log(data.message); // Producto creado exitosamente
+                alert(data.message); // Producto creado exitosamente
+
+
+
+
+            } catch (error) {
+                console.error("Error al hacer la solicitud: ", error);
+            }
+        })
     </script>
 </body>
+
 </html>

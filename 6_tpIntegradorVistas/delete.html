@@ -72,7 +72,9 @@
                 const response = await fetch(`${urlBase}/api/products/${idProd}`);
                 console.log(response);
                 
-                const data = await response.json();
+                // Convierto a objeto JS este JSON
+                // {"payload":[{"id":28,"name":"fernet buhero negro","image":"https://canillalibre.uy/wp-content/uploads/2023/05/buhero-fernet.png","category":"drink","price":"7000.00","active":1}]}
+                const data = await response.json(); 
                 
                 const producto = data.payload[0];
                 
@@ -85,6 +87,16 @@
         
         function renderizarProducto(producto) {
             console.table(producto);
+            /*
+            {
+                active: 1
+                category: "drink"
+                id: 28
+                image: "https://canillalibre.uy/wp-content/uploads/2023/05/buhero-fernet.png"
+                name: "fernet buhero negro"
+                price: "7000.00"
+            }
+            */
             
             let htmlProducto = `
                 <ul class="listados-container">
@@ -95,12 +107,49 @@
                         Id: ${producto.id} / Nombre: ${producto.name} / <strong>Precio: $${producto.price}</strong>
                     </li>
                     <li class="li-listados">
-                        <button id="btn-modificar">Eliminar</button>
+                        <button id="btn-eliminar">Eliminar</button>
                     </li>
                 </ul>
             `;
 
             contenedorProductos.innerHTML = htmlProducto;
+
+            const btnEliminar = document.getElementById("btn-eliminar");
+
+            btnEliminar.addEventListener("click", () => {
+
+                const confirmacion = confirm("Querés eliminar este producto?");
+
+                if (!confirmacion) {
+                    alert("Eliminacion cancelada");
+
+                } else {
+                    eliminarProducto(producto.id);
+                }
+            });
+        }
+
+
+        async function eliminarProducto(id) {
+
+            try {
+                const response = await fetch(`${urlBase}/api/products/${id}`, {
+                    method: "DELETE"
+                });
+
+                console.log(response);
+
+                const data = await response.json();
+
+                // Limpiamos la pantalla (sacamos la lista del producto que acabamos de eliminar)
+                contenedorProductos.innerHTML = "";
+
+                console.log(data.message);
+                alert(data.message);
+
+            } catch(error) {
+                console.error("Error al eliminar un producto: ", error);
+            }
         }
     </script>
 </body>
