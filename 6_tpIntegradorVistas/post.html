@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear</title>
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Preset CSS sakura-vader -->
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-vader.css" type="text/css">
+
+    <!-- Ruta archivo CSS externo -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div>
+            <img id="logo" src="img/logo.jpg" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li class="lista-enlace">
+                    <a href="index.html">Principal</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="get.html">Obtener</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="post.html">Crear</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="put.html">Modificar</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="delete.html">Eliminar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contenedor-productos"></section>
+    </main>
+    
+    <script>
+        const contenedorProductos = document.getElementById("contenedor-productos");
+        const urlBase = "http://localhost:3000";
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Preset CSS sakura-vader -->
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-vader.css" type="text/css">
+
+    <!-- Ruta archivo CSS externo -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div>
+            <img id="logo" src="img/logo.jpg" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li class="lista-enlace">
+                    <a href="index.html">Principal</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="get.html">Obtener</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="post.html">Crear</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="put.html">Modificar</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="delete.html">Eliminar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="titulo-pagina">Lista de productos</h2>
+        <section id="contenedor-productos"></section>
+    </main>
+    
+    <script>
+        const contenedorProductos = document.getElementById("contenedor-productos");
+        const urlBase = "http://localhost:3000";
+
+        async function obtenerProductos() {
+            try {
+                const response = await fetch(`${urlBase}/api/products`);
+                console.log(response);
+
+                const data = await response.json();
+
+                // En data tenemos payload: arrayDeObjetos
+                const productos = data.payload;
+                console.table(productos);
+
+                renderizarProductos(productos);
+
+            } catch (error) {
+                console.error("Error al hacer la solicitud: ", error);
+            }
+        }
+
+
+        function renderizarProductos(array) {
+            let htmlProducto = "";
+
+            array.forEach(prod => {
+                htmlProducto += `
+                    <div class="card-producto">
+                        <img class="card-img" src="${prod.image}" alt="${prod.name}">
+                        <h4>${prod.name}</h4>
+                        <p>Id: ${prod.id}</p>
+                        <p>$ ${prod.price}</p>
+                    </div>
+                `;
+            });
+
+            contenedorProductos.innerHTML = htmlProducto;
+        }
+
+        obtenerProductos();
+    </script>
+</body>
+</html>

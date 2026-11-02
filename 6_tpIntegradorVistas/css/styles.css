@@ -1,0 +1,105 @@
+:root {
+    --rojo-principal: #e26f7a;
+}
+
+/*=================
+    General
+=================*/
+header {
+    margin-top: 20px;
+}
+
+header, header ul {
+    display: flex;
+    align-items: center;
+}
+
+header ul {
+    justify-content: space-around;
+}
+
+header ul, img {
+    margin-bottom: 0;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#logo {
+    border-radius: 50%;
+    width: 75px;
+}
+
+header nav {
+    width: 100%;
+    /* border: 1px solid; */
+}
+
+
+#contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.titulo-pagina {
+    margin-bottom: 30px;
+}
+
+
+/*=================
+    Tarjetas prod
+=================*/
+
+.card-producto {
+    width: 200px;
+    border: 2px solid var(--rojo-principal);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.card-producto h4 {
+    font-size: 14px;
+    color: var(--rojo-principal);
+}
+
+.card-producto p {
+    font-size: 12px;
+}
+
+.card-producto h4, .card-producto p {
+    margin: 0;
+}
+
+.card-img {
+    width: 80px;
+    height: 80px;
+}
+
+
+
+/*=================
+    Listas prod
+=================*/
+.listados-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.li-listados {
+    margin-bottom: 0;
+}
+
+.img-listados {
+    width: 80px;
+}

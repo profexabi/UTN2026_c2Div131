@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar</title>
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Preset CSS sakura-vader -->
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-vader.css" type="text/css">
+
+    <!-- Ruta archivo CSS externo -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div>
+            <img id="logo" src="img/logo.jpg" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li class="lista-enlace">
+                    <a href="index.html">Principal</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="get.html">Obtener</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="post.html">Crear</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="put.html">Modificar</a>
+                </li>
+                <li class="lista-enlace">
+                    <a href="delete.html">Eliminar</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="titulo-pagina">Obtener producto por id</h2>
+
+        <!-- Formulario obtener producto por id -->
+        <form id="getProductForm">
+            <label for="idProd">Id producto</label>
+            <input type="number" name="id" id="idProd" min="1" required>
+
+            <input type="submit" value="Consultar">
+        </form>
+
+        
+        <section id="contenedor-productos"></section>
+    </main>
+    
+    <script>
+        const contenedorProductos = document.getElementById("contenedor-productos");
+        const urlBase = "http://localhost:3000";
+        const getProductForm = document.getElementById("getProductForm");
+        
+        getProductForm.addEventListener("submit", async event => {
+            event.preventDefault(); // Evitamos el envio por defecto del formulario
+            
+            // Cuando hay un solo valor en un evento, como el idProd, podemos extraerlo asi
+            const idProd = event.target.idProd.value.trim(); // form de evento + id del input + valor del id + trim() limpiar espacios
+            console.log(idProd);
+
+
+            try {
+                const response = await fetch(`${urlBase}/api/products/${idProd}`);
+                console.log(response);
+                
+                const data = await response.json();
+                
+                const producto = data.payload[0];
+                
+                renderizarProducto(producto);
+                
+            } catch (error) {
+                console.error("Error al hacer la solicitud: ", error);
+            }
+        });
+        
+        function renderizarProducto(producto) {
+            console.table(producto);
+            
+            let htmlProducto = `
+                <ul class="listados-container">
+                    <li class="li-listados">
+                        <img src="${producto.image}" alt="${producto.name}" class="img-listados">
+                    </li>
+                    <li class="li-listados">
+                        Id: ${producto.id} / Nombre: ${producto.name} / <strong>Precio: $${producto.price}</strong>
+                    </li>
+                    <li class="li-listados">
+                        <button id="btn-modificar">Modificar</button>
+                    </li>
+                </ul>
+            `;
+
+            contenedorProductos.innerHTML = htmlProducto;
+        }
+    </script>
+</body>
+</html>
