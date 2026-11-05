@@ -41,7 +41,7 @@
     </header>
 
     <main>
-        <h2 class="titulo-pagina">Obtener producto por id</h2>
+        <h3 class="titulo-pagina">Obtener producto por id</h3>
 
         <!-- Formulario obtener producto por id -->
         <form id="getProductForm">
@@ -51,14 +51,16 @@
             <input type="submit" value="Consultar">
         </form>
 
-        
         <section id="contenedor-productos"></section>
+
+        <section id="contenedor-form"></section>
     </main>
     
     <script>
         const contenedorProductos = document.getElementById("contenedor-productos");
         const urlBase = "http://localhost:3000";
         const getProductForm = document.getElementById("getProductForm");
+        const contenedorForm = document.getElementById("contenedor-form");
         
         getProductForm.addEventListener("submit", async event => {
             event.preventDefault(); // Evitamos el envio por defecto del formulario
@@ -84,7 +86,6 @@
         });
         
         function renderizarProducto(producto) {
-            console.table(producto);
             
             let htmlProducto = `
                 <ul class="listados-container">
@@ -101,6 +102,98 @@
             `;
 
             contenedorProductos.innerHTML = htmlProducto;
+
+            const btnModificar = document.getElementById("btn-modificar");
+
+            btnModificar.addEventListener("click", () => {
+                
+                const confirmacion = confirm("Queres actualizar este producto?");
+
+                if (!confirmacion) {
+                    alert("Modificacion cancelada");
+
+                } else {
+                    renderizarFormPut(producto);
+                }
+            });
+        }
+
+
+        function renderizarFormPut(producto) {
+            let htmlForm = `
+                <h4>Actualizar producto</h4>
+
+                <form id="updateProductForm">
+
+                    <input type="hidden" name="id" value="${producto.id}">
+
+                    <label for="categoryProd">Categoria</label>
+                    <select name="category" id="categoryProd" required>
+                        <option value="food">Comida</option>
+                        <option value="drink">Bebida</option>
+                    </select>
+
+                    <label for="imageProd">Imagen</label>
+                    <input type="text" name="image" id="imageProd" value="${producto.image}" required>
+
+                    <label for="nameProd">Nombre</label>
+                    <input type="text" name="name" id="nameProd" value="${producto.name}" required>
+
+                    <label for="priceProd">Precio</label>
+                    <input type="number" name="price" id="priceProd" min="1" value="${producto.price}" required>
+
+                    <input type="submit" value="Actualizar producto">
+
+                </form>
+            `;
+
+            contenedorForm.innerHTML = htmlForm;
+
+            const updateProductForm = document.getElementById("updateProductForm");
+
+            updateProductForm.addEventListener("submit", event => {
+                // Llamamos a la funcion que hara la peticion PUT y le pasamos el event
+                actualizarProducto(event);
+            });
+        }
+
+
+
+        async function actualizarProducto(event) {
+
+            event.preventDefault(); // Evitamos el envio por defecto del formulario
+
+            const formData = new FormData(event.target);
+
+            const formObj = Object.fromEntries(formData.entries());
+
+            console.table(formObj);
+
+            try {
+                const response = await fetch(`${urlBase}/api/products`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formObj)
+                });
+
+                console.log(response);
+
+                const data = await response.json();
+
+                contenedorForm.innerHTML = "";
+                contenedorProductos.innerHTML = "";
+
+                console.log(data.message);
+                alert(data.message);
+
+
+
+            } catch (error) {
+                console.error("Error al enviar los datos");
+                alert("Error al procesar la solicitud");
+            }
         }
     </script>
 </body>

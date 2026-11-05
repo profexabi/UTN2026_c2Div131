@@ -108,7 +108,7 @@ header nav {
 /*=================
     Formularios
 =================*/
-#createProductForm {
+#createProductForm, #updateProductForm {
     display: flex;
     flex-direction: column;
     width: 50%;

@@ -7,11 +7,13 @@ import connection from "./src/api/database/db.js"; // Importo la conexion a la B
 import cors from "cors"; // Importamos el middleware CORS
 
 
+
 /*===============
     Config
 ===============*/
 const app = express(); // Crea una instancia de aplicacion de Express con todos sus metodos
 const PORT = environments.port;
+
 
 
 /*===============
@@ -27,6 +29,7 @@ app.use((req, res, next) => {
     console.log(`[${fecha.toLocaleDateString()} ${fecha.toLocaleTimeString()}] ${req.method} ${req.url}`);
     next(); // Pasa al siguiente middleware (si lo hay) o a la respuesta
 })
+
 
 
 /*===============
@@ -79,6 +82,21 @@ app.post("/api/products", async (req, res) => {
     // TO DO, pasarle el id recien asignado
     res.status(201).json({
         message: "Producto creado exitosamente"
+    });
+});
+
+
+// PUT product
+app.put("/api/products", async (req, res) => {
+    // Hacemos el destructuring de un objeto que parseamos previamente a traves del middleware express.json()
+    const { category, image, name, price, id } = req.body;
+
+    const sql = "UPDATE products SET name = ?, image = ?, price = ?, category = ? WHERE id = ?";
+
+    await connection.query(sql, [name, image, price, category, id]);
+
+    return res.status(200).json({
+        message: "Producto actualizado correctamente"
     });
 });
 
