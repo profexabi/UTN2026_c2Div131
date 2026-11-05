@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <!-- Ruta archivo CSS externo -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <header>
@@ -55,38 +57,108 @@
 
         <section id="contenedor-form"></section>
     </main>
-    
+
     <script>
         const contenedorProductos = document.getElementById("contenedor-productos");
-        const urlBase = "http://localhost:3000";
         const getProductForm = document.getElementById("getProductForm");
         const contenedorForm = document.getElementById("contenedor-form");
-        
+        const urlBase = "http://localhost:3000";
+
+
+
+        // Optimizacion 1: Mostramos el mensaje de exito/error visualmente
+        function mostrarMensaje(type, message) {
+            contenedorProductos.innerHTML = `        
+                <p class="mensaje ${type}">${message}</p>
+            `;
+        }
+
+
+
+        // Para mostrar la posible lista de errores, cada uno como un parrafo
+        function mostrarListaErrores(array) {
+            let htmlErrores = "";
+
+            array.forEach(error => {
+                htmlErrores += `<p class="mensaje error">${error}</p>`;
+            });
+
+            contenedorProductos.innerHTML = htmlErrores;
+        }
+
+
+
+        // Optimizacion 2: Hacemos una validacion previa de los datos del <form> en el cliente
+        function validarFormulario(data) {
+            const errores = []; // Igual que el middleware, creamos un array vacio de errores
+
+            // Verificamos que mandamos todos los campos
+            if (!data.name || !data.image || !data.price || !data.category) {
+                errores.push("Faltan campos requeridos");
+            }
+
+            // Validamos el campo nombre
+            if (!data.name || data.name.trim().length < 2) {
+                errores.push("El nombre debe tener al menos 2 caracteres");
+            }
+
+            // Validamos el campo image
+            if (!data.image) {
+                errores.push("Debe incluirse una imagen");
+            }
+
+            // Validamos el campo precio
+            if (typeof data.price !== "number" || data.price <= 0) {
+                errores.push("El precio debe ser un numero mayor a 0");
+            }
+
+            // Validamos el campo category
+            if (!data.category) {
+                errores.push("Debe seleccionar una categoria")
+            }
+
+            return errores;
+        }
+
+
+
         getProductForm.addEventListener("submit", async event => {
             event.preventDefault(); // Evitamos el envio por defecto del formulario
-            
+
             // Cuando hay un solo valor en un evento, como el idProd, podemos extraerlo asi
             const idProd = event.target.idProd.value.trim(); // form de evento + id del input + valor del id + trim() limpiar espacios
             console.log(idProd);
+
+            // Optimizacion 3: Verificamos si hay un id antes de mandarlo
+            if (!idProd) {
+                return mostrarMensaje("error", "Ingresa un id valido");
+            }
 
 
             try {
                 const response = await fetch(`${urlBase}/api/products/${idProd}`);
                 console.log(response);
-                
+
                 const data = await response.json();
-                
+
+                // Optimizacion 4: Filtramos errores 400 o 500
+                if (!response.ok) {
+                    return mostrarMensaje("error", data.message);
+                    // el return hace que esta funcion termine
+                }
+
                 const producto = data.payload[0];
-                
+
                 renderizarProducto(producto);
-                
+
             } catch (error) {
                 console.error("Error al hacer la solicitud: ", error);
+                mostrarMensaje("error", "Error al enviar la informacion");
             }
         });
-        
+
         function renderizarProducto(producto) {
-            
+
             let htmlProducto = `
                 <ul class="listados-container">
                     <li class="li-listados">
@@ -106,7 +178,7 @@
             const btnModificar = document.getElementById("btn-modificar");
 
             btnModificar.addEventListener("click", () => {
-                
+
                 const confirmacion = confirm("Queres actualizar este producto?");
 
                 if (!confirmacion) {
@@ -142,6 +214,12 @@
                     <label for="priceProd">Precio</label>
                     <input type="number" name="price" id="priceProd" min="1" value="${producto.price}" required>
 
+                    <label for="activeProd">Activo</label>
+                    <select name="active" id="activeProd" required>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+
                     <input type="submit" value="Actualizar producto">
 
                 </form>
@@ -167,8 +245,24 @@
 
             const formObj = Object.fromEntries(formData.entries());
 
+            // Optimizacion 5: Cambiamos algunos datos del formulario
+            formObj.price = Number(formObj.price); // Convertimos el precio en un numero para poder validarlo como tal
+            formObj.name = formObj.name.trim();
+            console.log(formObj); 
+            
+            // El objeto con la info del formulario se lo paso a la funcion para validar los campos
+            const errores = validarFormulario(formObj); 
+
+            console.log(errores);
+
+            // Si hay errores, mostramos mensaje de error y terminamos aca, no hacemos la peticion
+            if (errores.length > 0) {
+                return mostrarListaErrores(errores);
+            }
+
             console.table(formObj);
 
+            
             try {
                 const response = await fetch(`${urlBase}/api/products`, {
                     method: "PUT",
@@ -182,19 +276,22 @@
 
                 const data = await response.json();
 
-                contenedorForm.innerHTML = "";
-                contenedorProductos.innerHTML = "";
+                if (!response.ok) {
+                    console.error(data.message);
+                    return mostrarMensaje("error", data.message);
+                }
 
                 console.log(data.message);
-                alert(data.message);
-
+                contenedorForm.innerHTML = "";
+                mostrarMensaje("exito", data.message);
 
 
             } catch (error) {
                 console.error("Error al enviar los datos");
-                alert("Error al procesar la solicitud");
+                mostrarMensaje("error", "Error al enviar la informacion");
             }
         }
     </script>
 </body>
+
 </html>

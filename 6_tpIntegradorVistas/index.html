@@ -39,53 +39,69 @@
             </ul>
         </nav>
     </header>
-
+    
     <main>
         <h3 class="titulo-pagina">Lista de productos</h3>
         <section id="contenedor-productos"></section>
     </main>
     
+    
     <script>
         const contenedorProductos = document.getElementById("contenedor-productos");
         const urlBase = "http://localhost:3000";
-
+        
+        // Optimizacion 1: Mostramos el mensaje de error visualmente
+        function mostrarError(message) {
+            contenedorProductos.innerHTML = `        
+                <p class="mensaje error">${message}</p>
+            `;
+        }
+        
         async function obtenerProductos() {
             try {
                 const response = await fetch(`${urlBase}/api/products`);
-                console.log(response);
+                console.log(response); // Response {type: 'cors', url: 'http://localhost:3000/api/products', redirected: false, status: 200, ok: true, …}
 
                 const data = await response.json();
 
+                // Optimizacion 2: Filtramos errores 400 o 500
+                if (!response.ok) {
+                    return mostrarError(data.message);
+                    // el return hace que esta funcion termine
+                }
+                
                 // En data tenemos payload: arrayDeObjetos
                 const productos = data.payload;
                 console.table(productos);
-
+                
                 renderizarProductos(productos);
-
+                
             } catch (error) {
+                // El catch solo captura errores reales de red (no hay conexion o el server esta caido)
                 console.error("Error al hacer la solicitud: ", error);
+                mostrarError("Fallo la conexion con el servidor");
             }
         }
 
 
         function renderizarProductos(array) {
             let htmlProducto = "";
-
+            
             array.forEach(prod => {
                 htmlProducto += `
-                    <div class="card-producto">
-                        <img class="card-img" src="${prod.image}" alt="${prod.name}">
-                        <h4>${prod.name}</h4>
-                        <p>Id: ${prod.id}</p>
-                        <p>$ ${prod.price}</p>
-                    </div>
-                `;
-            });
-
-            contenedorProductos.innerHTML = htmlProducto;
-        }
-
-        obtenerProductos();
+                <div class="card-producto">
+                    <img class="card-img" src="${prod.image}" alt="${prod.name}">
+                    <h4>${prod.name}</h4>
+                    <p>Id: ${prod.id}</p>
+                    <p>$ ${prod.price}</p>
+                </div>
+                    `;
+                });
+                
+                contenedorProductos.innerHTML = htmlProducto;
+            }
+            
+            obtenerProductos();
     </script>
 </body>
 </html>

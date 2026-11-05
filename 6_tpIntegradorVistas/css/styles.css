@@ -1,9 +1,47 @@
+/*=================
+    Generales
+=================*/
 :root {
     --rojo-principal: #e26f7a;
+
+    --error-color: #58151c;
+    --error-fondo:#f8d7da;
+    --error-borde: #f1aeb5;
+
+    --exito-color: #0a3622;
+    --exito-fondo: #d1e7dd;
+    --exito-borde: #a3cfbb;
 }
 
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.mensaje {
+    margin: 0 auto;
+    padding: 20px 60px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.error {
+    color: var(--error-color);
+    background-color: var(--error-fondo);
+    border: 2px solid var(--error-borde);
+}
+
+.exito {
+    color: var(--exito-color);
+    background-color: var(--exito-fondo);
+    border: 2px solid var(--exito-borde);
+}
+
+
+
 /*=================
-    General
+    Header
 =================*/
 header {
     margin-top: 20px;
@@ -22,10 +60,6 @@ header ul, img {
     margin-bottom: 0;
 }
 
-ul {
-    padding-left: 0;
-    list-style-type: none;
-}
 
 #logo {
     border-radius: 50%;
