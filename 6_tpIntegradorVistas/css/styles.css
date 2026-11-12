@@ -1,6 +1,7 @@
 /*=================
     Generales
 =================*/
+
 :root {
     --rojo-principal: #e26f7a;
 
@@ -43,6 +44,7 @@ ul {
 /*=================
     Header
 =================*/
+
 header {
     margin-top: 20px;
 }
@@ -137,6 +139,7 @@ header nav {
 .img-listados {
     width: 80px;
 }
+
 
 
 /*=================

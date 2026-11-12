@@ -2,13 +2,14 @@
     Middlewares
 =================*/
 
+
+
 // Middleware logger para analizar las solicitudes por la consola
 const loggerUrl = (req, res, next) => {
     const fecha = new Date();
     console.log(`[${fecha.toLocaleDateString()} ${fecha.toLocaleTimeString()}] ${req.method} ${req.url}`);
     next(); // Pasa al siguiente middleware (si lo hay) o a la respuesta
 }
-
 
 
 
@@ -25,7 +26,6 @@ const validateId = (req, res, next) => {
     req.id = id;
     next(); // Damos paso al siguiente middleware o a la response
 }
-
 
 
 
@@ -69,6 +69,7 @@ const validateProduct = (req, res, next) => {
 
     next(); // Damos paso al siguiente middleware o a la response
 }
+
 
 
 export {

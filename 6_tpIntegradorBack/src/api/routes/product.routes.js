@@ -4,10 +4,6 @@
 
 import { Router } from "express";
 import { validateId, validateProduct } from "../middlewares/middlewares.js";
-
-
-// Temporalmente (antes de seguir modularizando) traemos la conexion a la BBDD
-import connection from "../database/db.js"; // Importo la conexion a la BBDD
 import { createProduct, getAllProducts, getProductById, modifyProduct, removeProduct } from "../controllers/product.controllers.js";
 
 

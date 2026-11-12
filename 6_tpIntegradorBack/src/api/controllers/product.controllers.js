@@ -2,9 +2,8 @@
     Controladores producto
 ============================*/
 
-// Temporalmente (antes de seguir modularizando) traemos la conexion a la BBDD
-import connection from "../database/db.js"; // Importo la conexion a la BBDD
-
+// Importamos todos los metodos del modelo con el nombre ProductModels
+import ProductModels from "../models/product.models.js";
 
 
 /////////////////////////
@@ -14,9 +13,9 @@ export const getAllProducts = async (req, res) => {
     // Optimizacion 1: Manejo de errores con try catch
     try {
 
-        // Optimizacion 2: No seleccionar todo, solo traer las columnas necesarias (mas eficiente en memoria, en red)
-        const sql = "SELECT id, name, price, image, active FROM products";
-        const [rows, tables] = await connection.query(sql);
+        // El controlador llama al modelo y espera a que la promesa se resuelva
+        const [rows, tables] = await ProductModels.selectAllProducts();
+
 
         // Optimizacion 3: Respuesta mas limpia con codigo semantico
         if (rows.length === 0) {
@@ -25,6 +24,7 @@ export const getAllProducts = async (req, res) => {
             });
         }
     
+        
         res.status(200).json({
             payload: rows
         });
@@ -47,10 +47,9 @@ export const getProductById = async (req, res) => {
 
     // Optimizacion 2: Manejo de errores con try catch
     try {
-        // Optimizacion 4: No seleccionar todo, solo traer las columnas necesarias (mas eficiente en memoria, en red)
-        const sql = `SELECT id, name, price, image, active FROM products WHERE products.id = ${req.id}`;
 
-        const [rows] = await connection.query(sql);
+        // Este controlador llama al modelo y le pasa el id, para que el modelo haga la consulta pasandole el parametro que le envio el controlador
+        const [rows] = await ProductModels.selectProductById(req.id);
 
         // Optimizacion 5: Devolvemos un codigo 404 para producto no encontrado
         if (rows.length === 0) {
@@ -79,17 +78,12 @@ export const getProductById = async (req, res) => {
 // POST product
 export const createProduct = async (req, res) => {
 
-    // Optimizacion 1: Validamos los datos del form en el middleware (de ruta) validateProduct
-
     // Optimizacion 2: Manejo de errores con try catch
     try {
         // Hacemos el destructuring de un objeto que parseamos previamente a traves del middleware express.json()
         const { category, image, name, price } = req.body;
     
-        // Los placeholders "?" son una medida de seguridad para prevenir ataques de seguridad informatica como la inyeccion SQL
-        const sql = "INSERT INTO products (name, image, category, price) VALUES (?, ?, ?, ?)";
-    
-        const [rows] = await connection.query(sql, [name, image, category, price]);
+        const [rows] = await ProductModels.insertNewProduct(name, image, category, price);
 
         console.log(rows);
 
@@ -113,20 +107,16 @@ export const createProduct = async (req, res) => {
 /////////////////////////
 // PUT product
 export const modifyProduct = async (req, res) => {
-    // Optimizacion 1: Validamos los datos del form en el middleware (de ruta) validateProduct
 
     // Optimizacion 2: Manejo de errores con try catch
     try {
         // Hacemos el destructuring de un objeto que parseamos previamente a traves del middleware express.json()
         const { category, image, name, price, active, id } = req.body;
     
-        const sql = "UPDATE products SET name = ?, image = ?, price = ?, category = ?, active = ? WHERE id = ?";
-    
-        const [result] = await connection.query(sql, [name, image, price, category, active, id]);
+        const [result] = await ProductModels.updateProduct(name, image, price, category, active, id);
+
         console.log(result);
 
-        // TO DO, revisar este endpoint
-        // Optimizacion 4: Verificamos si realmente se actualizo algo (hay filas afectadas)
         if (result.changedRows === 0) {
             return res.status(404).json({
                 message: "No se actualizo el producto"
@@ -153,13 +143,11 @@ export const modifyProduct = async (req, res) => {
 // DELETE product
 export const removeProduct = async (req, res) => {
     
-    // Optimizacion 1: Validamos el id en el middleware (de ruta) validateId
-    
     // Optimizacion 2: Manejo de errores con try catch
     try {
-        const sql = "DELETE FROM products WHERE id = ?";
+        
     
-        await connection.query(sql, [req.id]);
+        await ProductModels.deleteProduct(req.id);
     
         res.status(200).json({
             message: `Producto con id ${req.id} eliminado exitosamente`
