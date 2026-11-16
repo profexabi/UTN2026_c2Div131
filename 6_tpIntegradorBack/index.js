@@ -5,7 +5,7 @@ import express from "express"; // Importamos el framework Express
 import environments from "./src/api/config/environments.js"; // Traigo la info de la variables de entorno
 import cors from "cors"; // Importamos el middleware CORS
 import { loggerUrl } from "./src/api/middlewares/middlewares.js";
-import { productRoutes } from "./src/api/routes/index.js";
+import { productRoutes, viewRoutes } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 
@@ -47,30 +47,8 @@ app.get("/", (req, res) => {
 app.use("/api/products", productRoutes); 
 
 // Rutas vistas
-// app.use("/dasboard/principal", rutasVistas)
+app.use("/dashboard", viewRoutes);
 
-// TO DO -> Modularizar vistas
-app.get("/dashboard/principal", (req, res) => {
-    console.log(__dirname);
-    console.log(join(__dirname, "src/views"))
-    res.render("index");
-});
-
-app.get("/dashboard/consultar", (req, res) => {
-    res.render("get");
-});
-
-app.get("/dashboard/crear", (req, res) => {
-    res.render("post");
-});
-
-app.get("/dashboard/modificar", (req, res) => {
-    res.render("put");
-});
-
-app.get("/dashboard/eliminar", (req, res) => {
-    res.render("delete");
-});
 
 // Rutas login
 // app.use("/login", rutasAutenticacion)

@@ -3,6 +3,18 @@
 
 ---
 
+# Proxima clase
+### Backoffice
+- Vistas Login
+- Modularizarlas
+- Bcrypt
+
+### Vistas clientes
+- `jsPDF`
+- Creacion de nueva venta -> tabla ventas
+
+---
+
 # Cronograma clases
 
 ## Fechas importantes

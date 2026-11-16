@@ -7,6 +7,25 @@ import ProductModels from "../models/product.models.js";
 
 
 /////////////////////////
+// GET active products
+export const getActiveProducts = async (req, res) => {
+    try {
+        const [rows] = await ProductModels.selectActiveProducts();
+
+        res.status(200).json({
+            payload: rows
+        })
+
+    } catch (error) {
+        console.log("Error obteniendo productos activos: ", error);
+
+        res.status(500).json({
+            message: "Error interno del servidor"
+        });
+    }
+}
+
+/////////////////////////
 // GET all products
 export const getAllProducts = async (req, res) => {
 

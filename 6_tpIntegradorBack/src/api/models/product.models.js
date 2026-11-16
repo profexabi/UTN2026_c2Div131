@@ -7,6 +7,14 @@ import connection from "../database/db.js"; // Importo la conexion a la BBDD
 
 
 ////////////////////////////////
+// Seleccionar productos activos
+const selectActiveProducts = () => {
+    const sql = "SELECT id, name, price, image FROM products WHERE active = ?";
+    return connection.query(sql, [1]);
+}
+
+
+////////////////////////////////
 // Seleccionar los productos
 const selectAllProducts = () => {
 
@@ -67,5 +75,6 @@ export default {
     selectProductById,
     insertNewProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    selectActiveProducts
 }
