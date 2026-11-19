@@ -1,5 +1,10 @@
 # Diccionario de conceptos basicos
 
+## Resumen MVC
+![Resumen MVC](resumenMVC.png)
+
+---
+
 ## Que es un endpoint?
 Un endpoint es una combinacion de tres cosas
 - Una ruta

@@ -39,6 +39,10 @@ ul {
     border: 2px solid var(--exito-borde);
 }
 
+input[type="submit"] {
+    border-radius: 4px !important;
+}
+
 
 
 /*=================
@@ -145,8 +149,50 @@ header nav {
 /*=================
     Formularios
 =================*/
-#createProductForm, #updateProductForm {
+#createProductForm, #createUserForm {
     display: flex;
     flex-direction: column;
+}
+
+#updateProductForm {
     width: 50%;
+}
+
+.createProduct-container, .createUser-container {
+    width: 46%;
+}
+
+.formsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/*=================
+    Login
+=================*/
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 20px;
+    height: 200px;
+    justify-content: space-between;
+}
+
+.btnForm {
+    padding: 10px !important;
+    font-size: 16px !important;
+}
+
+#btnLogout {
+    padding: 6px 12px;
+    margin-bottom: 2px;
 }

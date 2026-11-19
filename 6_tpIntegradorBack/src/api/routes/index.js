@@ -3,13 +3,14 @@
 // Importe todas las rutas de product.routes.js con el nombre productRoutes
 import productRoutes from "./product.routes.js"; 
 import viewRoutes from "./view.routes.js";
-
-// import userRoutes from "./user.routes.js";
-// import authRoutes from "./auth.routes.js";
+import authRoutes from "./auth.routes.js";
+import userRoutes from "./user.routes.js";
 
 
 // Exporto todas las rutas que centralice aca, en el archivo de barril
 export {
     productRoutes,
-    viewRoutes
+    viewRoutes,
+    authRoutes,
+    userRoutes
 }

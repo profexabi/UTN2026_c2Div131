@@ -20,11 +20,9 @@ router.get("/active", getActiveProducts);
 router.get("/", getAllProducts);
 
 
-
 /////////////////////////
 // GET product by id
 router.get("/:id", validateId, getProductById);
-
 
 
 /////////////////////////
@@ -32,11 +30,9 @@ router.get("/:id", validateId, getProductById);
 router.post("/", validateProduct, createProduct);
 
 
-
 /////////////////////////
 // PUT product
 router.put("/", validateProduct, modifyProduct);
-
 
 
 /////////////////////////

@@ -1,17 +1,27 @@
 # Progra III Div131 2026 c2
 
+- *26/11 Repaso*
+    - Repasar MVC creando controlador y modelo para crear usuario
+    - [bcrypt](https://www.npmjs.com/package/bcrypt)
+    - Repaso general
+
+    - [jsPDF](https://parallax.github.io/jsPDF/docs/)
+    - Creacion de nueva venta -> tabla ventas
+    
+- **30/11 defensa**
+- **03/12 recu**
 
 ---
 
-# Proxima clase
-### Backoffice
-- Vistas Login
-- Modularizarlas
-- Bcrypt
+## Entendiendo el backend
+- [Playlist de Programación Web de Todocode](https://www.youtube.com/watch?v=lC6JOQLIgp0&list=PLQxX2eiEaqbxx6Ds5bd1F6LZJo7_OnZhV)
+    - Arquitectura cliente servidor
+    - Protocolo HTTP
+    - Que es JSON
+    - Que son las APIs
 
-### Vistas clientes
-- `jsPDF`
-- Creacion de nueva venta -> tabla ventas
+
+- [Protocolo HTTP y Lenguaje HTML](https://www.youtube.com/watch?v=l6oF_RpBf64)
 
 ---
 

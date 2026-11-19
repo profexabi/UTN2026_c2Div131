@@ -3,34 +3,60 @@
 
     <main>
 
-        <!-- Formulario POST product -->
-        <section class="createProduct-container">
+        <div class="formsContainer">
+            <!-- Formulario POST product -->
+            <section class="createProduct-container">
+    
+                <h4><%= about %></h4>
+    
+                <form id="createProductForm">
+    
+                    <label for="categoryProd">Categoria</label>
+                    <select name="category" id="categoryProd" required>
+                        <option value="food">Comida</option>
+                        <option value="drink">Bebida</option>
+                    </select>
+    
+                    <label for="imageProd">Imagen</label>
+                    <input type="text" name="image" id="imageProd" required>
+    
+                    <label for="nameProd">Nombre</label>
+                    <input type="text" name="name" id="nameProd" required>
+    
+                    <!-- El valor que ponga aca, aunque sea number, lo recogere como string -->
+                    <label for="priceProd">Precio</label>
+                    <input type="number" name="price" id="priceProd" min="1" required>
+    
+                    <input type="submit" value="Crear producto" class="btnForm">
+    
+                </form>
+    
+            </section>
 
-            <h3><%= about %></h3>
 
-            <form id="createProductForm">
+            <!-- Formulario POST user -->
+            <section class="createUser-container">
+    
+                <h4>Crear usuario admin</h4>
+    
+                <!-- Le haremos una peticion POST a /api/users para crear un nuevo user admin -->
+                <form id="createUserForm" method="POST" action="/api/users">
+    
+                    <label for="nameUser">Nombre</label>
+                    <input type="text" name="name" id="nameUser" required>
 
-                <label for="categoryProd">Categoria</label>
-                <select name="category" id="categoryProd" required>
-                    <option value="food">Comida</option>
-                    <option value="drink">Bebida</option>
-                </select>
-
-                <label for="imageProd">Imagen</label>
-                <input type="text" name="image" id="imageProd" required>
-
-                <label for="nameProd">Nombre</label>
-                <input type="text" name="name" id="nameProd" required>
-
-                <!-- El valor que ponga aca, aunque sea number, lo recogere como string -->
-                <label for="priceProd">Precio</label>
-                <input type="number" name="price" id="priceProd" min="1" required>
-
-                <input type="submit" value="Crear producto">
-
-            </form>
-
-        </section>
+                    <label for="emailUser">Email</label>
+                    <input type="text" name="email" id="emailUser" required>
+            
+                    <label for="passwordUser">Password</label>
+                    <input type="password" name="password" id="passwordUser" required>
+            
+                    <input type="submit" value="Crear admin" class="btnForm">
+                    
+                </form>
+    
+            </section>
+        </div>
         <section id="contenedor-productos"></section>
     </main>
 
